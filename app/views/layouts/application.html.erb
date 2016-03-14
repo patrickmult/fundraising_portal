@@ -8,7 +8,63 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="<%=  %>">Fundraising Web Portal
+        </a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+          <% if 1==2 %>
+          <li class="text-center"><a href="<%=  %>">Reservations</a></li>
+          <li><a href="<%=  %>">Accounts</a></li>
+          <li><a href="<%=  %>">Brochures</a></li>
+          <li><a href="<%=  %>">Addresses</a></li>
+          <li><a href="<%=  %>">Users</a></li>
+
+          <% end %>
+
+        </ul>
+        <!--
+        <div class="navcontainer">
+          <img class="navlogo" src="<%= asset_path 'logo.png' %>" />
+        </div>
+        -->
+
+        <form class="navbar-form navbar-right" role="form">
+          <div class="form-group">
+
+            <% if user_signed_in? %>
+              <%= content_tag(:span, current_user.email, :class => "user_email")%>
+              <%= link_to('Preferences', edit_user_path(:id => current_user.id), :class => "btn btn-info") %> 
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn btn-warning") %>
+            <% else %>
+              <li>
+              <%= link_to('Login', new_user_session_path)  %>  
+              </li>
+
+            <% end %>
+
+          </div>
+        </form>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </nav>
+
+<div class="container">
+
 <%= yield %>
 
+</div>
 </body>
 </html>
